@@ -1,14 +1,20 @@
 import streamlit as st
+from hello import say_hello
+from ai import get_ai_response
+from database import save_data
 
-st.title("My First Hackathon App")
-
-if "click_count" not in st.session_state:
-    st.session_state.click_count = 0
-
-name = st.text_input("What's your name?")
+st.title("My Awesome Hackathon App 🚀")
+name = st.text_input("What is your name?")
 
 if st.button("Say Hello"):
-    st.session_state.click_count += 1
-    st.write(f"Hello {name}! 🚀")
+    message = say_hello(name)
+    st.success(message)
 
-st.write(f"Say Hello clicked: {st.session_state.click_count} time(s)")
+question = st.text_input("Ask a question")
+
+if st.button("Ask AI"):
+    answer = get_ai_response(question)
+    st.write(answer)
+if st.button("Save Data"):
+    result = save_data(name, question)
+    st.write(result)
