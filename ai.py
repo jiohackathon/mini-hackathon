@@ -8,7 +8,7 @@ client = genai.Client()
 
 def get_ai_response(question):
     response = client.models.generate_content(
-       model="Antigravity",
+       model="gemini-3.8-flash",
         contents=question
     )
 
